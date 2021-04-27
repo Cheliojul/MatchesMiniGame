@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './start.css';
 
-export const Start = () => (
-  <button type="button" className="start_button">
+export const StartScreen = ({ startGame }) => (
+  <button
+    type="button"
+    className="start__button"
+    onClick={() => { startGame() }}
+  >
     Start
   </button>
 );
 
-Start.propTypes = {
+StartScreen.propTypes = {
   startGame: PropTypes.func.isRequired,
 };
