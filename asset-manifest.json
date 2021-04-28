@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.4f2d7ef8.chunk.css",
-    "main.js": "/static/js/main.1e8cc1ad.chunk.js",
-    "main.js.map": "/static/js/main.1e8cc1ad.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.e465285a.js",
-    "runtime-main.js.map": "/static/js/runtime-main.e465285a.js.map",
-    "static/js/2.28251c44.chunk.js": "/static/js/2.28251c44.chunk.js",
-    "static/js/2.28251c44.chunk.js.map": "/static/js/2.28251c44.chunk.js.map",
-    "static/js/3.11624804.chunk.js": "/static/js/3.11624804.chunk.js",
-    "static/js/3.11624804.chunk.js.map": "/static/js/3.11624804.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.4f2d7ef8.chunk.css.map": "/static/css/main.4f2d7ef8.chunk.css.map",
-    "static/js/2.28251c44.chunk.js.LICENSE.txt": "/static/js/2.28251c44.chunk.js.LICENSE.txt"
+    "main.css": "/matches-mini-game/static/css/main.4f2d7ef8.chunk.css",
+    "main.js": "/matches-mini-game/static/js/main.51d315c2.chunk.js",
+    "main.js.map": "/matches-mini-game/static/js/main.51d315c2.chunk.js.map",
+    "runtime-main.js": "/matches-mini-game/static/js/runtime-main.0b002fd9.js",
+    "runtime-main.js.map": "/matches-mini-game/static/js/runtime-main.0b002fd9.js.map",
+    "static/js/2.28251c44.chunk.js": "/matches-mini-game/static/js/2.28251c44.chunk.js",
+    "static/js/2.28251c44.chunk.js.map": "/matches-mini-game/static/js/2.28251c44.chunk.js.map",
+    "index.html": "/matches-mini-game/index.html",
+    "static/css/main.4f2d7ef8.chunk.css.map": "/matches-mini-game/static/css/main.4f2d7ef8.chunk.css.map",
+    "static/js/2.28251c44.chunk.js.LICENSE.txt": "/matches-mini-game/static/js/2.28251c44.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e465285a.js",
+    "static/js/runtime-main.0b002fd9.js",
     "static/js/2.28251c44.chunk.js",
     "static/css/main.4f2d7ef8.chunk.css",
-    "static/js/main.1e8cc1ad.chunk.js"
+    "static/js/main.51d315c2.chunk.js"
   ]
 }
