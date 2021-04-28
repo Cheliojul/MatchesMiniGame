@@ -1,7 +1,14 @@
 .game-window {
-  width: calc(100vw - 300px);
-  height: 350px;
-  margin: 20px auto;
-  background-color: gray;
-  border-radius: 10px;
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url('../src/images/Fon.jfif');
+  background-blend-mode: multiply;
+  background-color: rgba(58, 58, 224, 0.897);
+
+  &__container {
+    height: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+  }
 }

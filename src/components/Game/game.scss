@@ -1,0 +1,68 @@
+.game {
+  height: 100%;
+
+  color: white;
+  font-size: 36px;
+
+  &__counter {
+    width: 33vw;
+
+    text-align: center;
+  }
+
+  &__counters-container {
+    display: flex;
+    height: 40vh;
+  }
+
+  &__emodji-container {
+    font-size: 20px;
+  }
+
+  &__buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    height: 40vh;
+    padding-top: 20px;
+  }
+
+  &__title {
+    height: 35px;
+    padding: 15px 0;
+
+    font-size: 30px;
+    text-align: center;
+  }
+
+  &__reset {
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__button,
+  &__reset {
+    height: 60px;
+    padding: 10px 25px;
+
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .game {
+    font-size: 18px;
+
+    &__title {
+      font-size: 22px;
+    }
+    &__button,
+    &__reset {
+      height: 30px;
+
+      font-size: 18px;
+    }
+  }
+}

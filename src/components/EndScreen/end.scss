@@ -1,0 +1,10 @@
+.end {
+  display: flex;
+  height: 100%;
+
+  &__title {
+    margin: auto;
+
+    font-size: 80px;
+  }
+}

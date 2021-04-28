@@ -1,4 +1,5 @@
-import React, {useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
+import './reset.scss';
 import './App.scss';
 import { Game } from './components/Game/Game';
 import { StartScreen } from './components/StartScreen/StartScreen';
@@ -9,17 +10,17 @@ export const App = () => {
   const [maxMatches, setMaxMatches] = useState(14);
   const [activeMatches, setActiveMatches] = useState(3);
   const startGame = useCallback(
-    (firstTurn, maxMatchesCount, activeMatchesCount ) => {
+    (whosfirstTurn, maxMatchesCount, activeMatchesCount) => {
       setStarted(true);
-      setFirstTurn(firstTurn);
+      setFirstTurn(whosfirstTurn);
       if (maxMatchesCount !== maxMatches) {
-        setMaxMatches(maxMatches)
+        setMaxMatches(+maxMatchesCount);
       }
       if (activeMatchesCount !== activeMatches) {
-        setActiveMatches(activeMatches);
+        setActiveMatches(+activeMatchesCount);
       }
     },
-    [],
+    [maxMatches, activeMatches],
   );
 
   return (
@@ -27,15 +28,16 @@ export const App = () => {
       <div className="game-window">
         <div className="game-window__container">
           {!started
-            ? <StartScreen startGame={startGame} setFirstTurn={setFirstTurn} />
+            ? <StartScreen startGame={startGame} />
             : ''}
-          {started &&
+          {started
+          && (
             <Game
               firstTurn={firstTurn}
               maxMatches={maxMatches}
               activeMatches={activeMatches}
             />
-          }
+          )}
         </div>
       </div>
     </>
