@@ -33,5 +33,5 @@ Create App where user can paly with AI in this game. Player`s first turn.
 # Will be a plus
 
 * Add second game mode : AI`s first turn. User can choose Game Mode.
-* Create game in general, when matches 2n + 1 and allows to take matches from 1 to m. User can enter n and m.
+* Create custom game mode , when matches 2n + 1 and allows to take matches from 1 to m. User can enter n and m.
 
