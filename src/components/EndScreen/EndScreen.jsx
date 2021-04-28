@@ -10,5 +10,5 @@ export const EndScreen = ({ isPlayerWon }) => (
 );
 
 EndScreen.propTypes = {
-  startGame: PropTypes.func.isRequired,
+  isPlayerWon: PropTypes.func.isRequired,
 };

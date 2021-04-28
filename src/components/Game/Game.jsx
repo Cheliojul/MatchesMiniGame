@@ -3,33 +3,37 @@ import './game.css';
 import { EndScreen } from '../EndScreen/EndScreen';
 
 
-export const Game = () => {
-  const [isPlayerTurn, setPlayerTurn] = useState(true);
+export const Game = ({ gamemode, maxMatches, activeMatches }) => {
+  const [isPlayerTurn, setPlayerTurn] = useState(gamemode === 1 ? true : false);
   const [isPlayerWon, setIsPlayerWon] = useState(false);
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
-
   const countRef = useRef();
-
-  const matchesToWin = 25;
+  debugger;
+  const matchesToWin = (maxMatches * 2) + 1 || 25;
   const count = useMemo(() => (matchesToWin - playerScore - computerScore),
   [playerScore, computerScore]);
 
   countRef.current = count;
+
   const computerTurn = useCallback(
     () => {
       setTimeout(() => {
         const remainedMatches = countRef.current;
         let selectedComputerNumber;
-
         if (remainedMatches > 3) {
+          if ((remainedMatches - 1) % 4 === 0 || (remainedMatches- 1) % 4 === 1) {
+            selectedComputerNumber = 1;
+          } else if ((remainedMatches - 3) % 4 === 0 || (remainedMatches- 3) % 4 === 1) {
+            selectedComputerNumber = 3;
+          }
           selectedComputerNumber = (computerScore + 3) % 2 === 0 ? 1 : 2;
         }
-        if (countRef.current === 3) {
-          selectedComputerNumber = (computerScore + 3) % 2 === 0 ? 3 : 2;
+        if (remainedMatches === 3) {
+          selectedComputerNumber = (computerScore % 2 ) === 0 ? 2 : 3;
         }
         if (remainedMatches < 3) {
-          selectedComputerNumber = (computerScore + 2) % 2 === 0 ? 2 : 1;
+          selectedComputerNumber = (computerScore % 2 ) === 0 ? 2 : 1;
         }
         
         if (remainedMatches - 3 === 3 && (computerScore + 3) % 2 !== 0) {
@@ -48,15 +52,15 @@ export const Game = () => {
   );
 
   const playerTurn = (event) => {
-    const { value } = event.target;
-    if (!isPlayerTurn || count - +value < 0) return;
+    const value  = Number(event.target.value);
+    if (!isPlayerTurn || count - value < 0) return;
 
-    if (count - +value !== 0) {
+    if (count - value !== 0) {
       setPlayerTurn(false);
-      setPlayerScore(playerScore + +value);
+      setPlayerScore(playerScore + value);
       computerTurn();
     } else {
-      setPlayerScore(playerScore + +value);
+      setPlayerScore(playerScore + value);
       setPlayerTurn(false);
     }
   };
@@ -66,17 +70,37 @@ export const Game = () => {
       setIsPlayerWon(true);
     }
   }, [count, playerScore]);
-
+ 
+  const createButtons = () => (
+    Array(activeMatches).fill().map((el, i) => (
+      <button
+        type="button" 
+        className="player__button"
+        value={i+1}
+        onClick={playerTurn}
+      >
+        {i+1}
+      </button>
+  ))
+  )
   const resetGame = useCallback(
     () => {
       setIsPlayerWon(false);
       setPlayerScore(0);
       setComputerScore(0);
       setPlayerTurn(true);
+      if (gamemode === 2){
+        computerTurn();
+      }
     },
     [],
   );
-
+  useEffect(() => {
+   if (gamemode === 2){
+     computerTurn();
+   } 
+  },[])
+  
   return (
     <>
       <div className="computer__counter">
@@ -100,29 +124,7 @@ export const Game = () => {
       </button>
       {count === 0 ? (<EndScreen isPlayerWon={isPlayerWon} />) : ''}
       <div className="button_container">
-        <button
-          className="player__button"
-          value={1}
-          onClick={playerTurn}
-        >
-          1
-        </button>
-        <button
-          type="button"
-          className="player__button"
-          value={2}
-          onClick={playerTurn}
-        >
-          2
-        </button>
-        <button
-          type="button"
-          className="player__button"
-          value={3}
-          onClick={playerTurn}
-        >
-          3
-        </button>
+        {createButtons()}
       </div>
     </>
   );

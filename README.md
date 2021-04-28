@@ -1,5 +1,7 @@
 # Game of matches(React)
 
+- [DEMO LINK](http://cheliojul.github.io/matches-mini-game/)
+
 - Used technologies:
   - ReactJS
   - React Hooks

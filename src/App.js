@@ -1,14 +1,23 @@
-import React, {useState, useCallback } from 'react'
-import './App.css';
-import { Game } from './components/Game/Game'
-import { StartScreen } from './components/StartScreen/StartScreen'
-import { EndScreen } from './components/EndScreen/EndScreen'
+import React, {useState, useCallback } from 'react';
+import './App.scss';
+import { Game } from './components/Game/Game';
+import { StartScreen } from './components/StartScreen/StartScreen';
+
 export const App = () => {
   const [started, setStarted] = useState(false);
-
+  const [firstTurn, setFirstTurn] = useState(0);
+  const [maxMatches, setMaxMatches] = useState(14);
+  const [activeMatches, setActiveMatches] = useState(3);
   const startGame = useCallback(
-    () => {
+    (firstTurn, maxMatchesCount, activeMatchesCount ) => {
       setStarted(true);
+      setFirstTurn(firstTurn);
+      if (maxMatchesCount !== maxMatches) {
+        setMaxMatches(maxMatches)
+      }
+      if (activeMatchesCount !== activeMatches) {
+        setActiveMatches(activeMatches);
+      }
     },
     [],
   );
@@ -18,11 +27,15 @@ export const App = () => {
       <div className="game-window">
         <div className="game-window__container">
           {!started
-            ? <StartScreen startGame={startGame} />
+            ? <StartScreen startGame={startGame} setFirstTurn={setFirstTurn} />
             : ''}
-          {started
-            ? (<Game />)
-            : ''}
+          {started &&
+            <Game
+              firstTurn={firstTurn}
+              maxMatches={maxMatches}
+              activeMatches={activeMatches}
+            />
+          }
         </div>
       </div>
     </>
